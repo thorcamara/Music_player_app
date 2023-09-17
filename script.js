@@ -32,3 +32,23 @@ const songs = [
     artist: 'Yung Logos',
   }
 ];
+
+let musicIndex = 0;
+let isPlaying = false;
+
+function togglePlay() {
+  if (isPlaying) {
+    pauseMusic();
+  } else {
+    playMusic();
+  }
+}
+
+function playMusic() {
+  isPlaying = true;
+  // Change play button icon
+  playBtn.classList.replace('fa-play', 'fa-pause');
+  // Set button hover title
+  playBtn.setAttribute('title', 'Pause');
+  music.play();
+}
