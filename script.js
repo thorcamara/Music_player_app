@@ -46,9 +46,28 @@ function togglePlay() {
 
 function playMusic() {
   isPlaying = true;
-  // Change play button icon
   playBtn.classList.replace('fa-play', 'fa-pause');
-  // Set button hover title
   playBtn.setAttribute('title', 'Pause');
   music.play();
+}
+
+function pauseMusic() {
+  isPlaying = false;
+  playBtn.classList.replace('fa-pause', 'fa-play');
+  playBtn.setAttribute('title', 'Play');
+  music.pause();
+}
+
+function loadMusic(song) {
+  music.src = song.path;
+  title.textContent = song.displayName;
+  artist.textContent = song.artist;
+  image.src = song.cover;
+  background.src = song.cover;
+}
+
+function changeMusic(direction) {
+  musicIndex = (musicIndex + direction + songs.length) % songs.length;
+  loadMusic(songs[musicIndex]);
+  playMusic();
 }
